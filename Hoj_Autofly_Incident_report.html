@@ -80,14 +80,16 @@
 
   .gate-brand {
     display: flex; flex-direction: column; align-items: center; gap: 10px;
+    width: min(430px, 86vw);
   }
 
   .gate-logo {
-    width: min(340px, 76vw);
+    width: 100%;
+    max-width: 100%;
     height: auto;
-    object-fit: contain;
     filter: drop-shadow(0 8px 22px rgba(15,23,42,0.08));
     margin-bottom: 4px;
+    display: block;
   }
 
   .gate-logo-sub {
@@ -182,9 +184,9 @@
   }
 
   .nav-logo-img {
-    height: 28px;
-    width: auto;
-    object-fit: contain;
+    width: 130px;
+    max-width: 100%;
+    height: auto;
     display: block;
   }
 
@@ -818,7 +820,7 @@
 
   .footer-left { font-size: 11px; color: var(--text-muted); line-height: 1.65; }
   .footer-right { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 7px; }
-  .footer-logo-img { height: 24px; width: auto; display: block; opacity: 0.98; }
+  .footer-logo-img { width: 122px; max-width: 100%; height: auto; display: block; opacity: 0.98; }
 
   /* ─── RESPONSIVE ─── */
   ::-webkit-scrollbar { width: 5px; height: 5px; }
