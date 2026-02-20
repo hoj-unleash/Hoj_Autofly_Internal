@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-label="Unleash logo">
   <rect width="1100" height="260" fill="none"/>
-  <text x="550" y="192" text-anchor="middle" fill="#111827" font-family="Inter, Avenir, Helvetica, Arial, sans-serif" font-size="186" letter-spacing="8" font-weight="500">UNLEASH</text>
-  <rect x="458" y="28" width="184" height="26" rx="2" fill="#e11d2e"/>
+  <text x="550" y="194" text-anchor="middle" fill="#101827" font-family="'Avenir Next', 'Montserrat', 'Inter', Helvetica, Arial, sans-serif" font-size="182" letter-spacing="7" font-weight="400">UNLEASH</text>
+  <rect x="498" y="30" width="122" height="20" rx="1" fill="#ef1b2d"/>
 </svg>
