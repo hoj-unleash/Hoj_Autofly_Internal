@@ -443,6 +443,47 @@
   .inv-pill.active  { background: var(--blue-subtle);  color: var(--blue-mid);  border: 1px solid var(--blue-border); }
   .inv-pill::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
 
+  .quick-steps {
+    background: linear-gradient(165deg, #ffffff 0%, #eff7ff 100%);
+    border: 1px solid var(--blue-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .quick-steps-title {
+    font-size: 14px; font-weight: 800; color: var(--blue);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .quick-step-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .quick-step-item {
+    background: rgba(255,255,255,0.75);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+  }
+
+  .quick-step-item h4 {
+    font-size: 14px; font-weight: 700; color: var(--text-primary);
+    line-height: 1.4; margin-bottom: 4px;
+  }
+
+  .quick-step-item p {
+    font-size: 14px; line-height: 1.65; color: var(--text-secondary);
+  }
+
+  .quick-step-meta {
+    margin-top: 8px;
+    font-size: 12px; font-weight: 700; color: var(--text-muted);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+
   /* ─── INCIDENT TIMELINE ─── */
   .timeline-wrap {
     background: var(--bg-white);
@@ -1421,43 +1462,3 @@
 
 </body>
 </html>
-  .quick-steps {
-    background: linear-gradient(165deg, #ffffff 0%, #eff7ff 100%);
-    border: 1px solid var(--blue-border);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .quick-steps-title {
-    font-size: 14px; font-weight: 800; color: var(--blue);
-    letter-spacing: 0.08em; text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-
-  .quick-step-list {
-    display: grid;
-    gap: 10px;
-  }
-
-  .quick-step-item {
-    background: rgba(255,255,255,0.75);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 12px;
-  }
-
-  .quick-step-item h4 {
-    font-size: 14px; font-weight: 700; color: var(--text-primary);
-    line-height: 1.4; margin-bottom: 4px;
-  }
-
-  .quick-step-item p {
-    font-size: 14px; line-height: 1.65; color: var(--text-secondary);
-  }
-
-  .quick-step-meta {
-    margin-top: 8px;
-    font-size: 12px; font-weight: 700; color: var(--text-muted);
-    letter-spacing: 0.04em; text-transform: uppercase;
-  }
