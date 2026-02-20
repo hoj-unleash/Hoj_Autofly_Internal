@@ -9,11 +9,11 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg:             #f4f6fb;
+    --bg:             #f6f8fc;
     --bg-white:       #ffffff;
-    --bg-subtle:      #f0f2f8;
-    --border:         #e2e6f0;
-    --border-strong:  #c8d0e4;
+    --bg-subtle:      #eef2f8;
+    --border:         #dbe3f0;
+    --border-strong:  #bfcbdf;
 
     --blue:           #1e40af;
     --blue-mid:       #2563eb;
@@ -37,13 +37,13 @@
     --green-subtle:   #f0fdf4;
     --green-border:   #bbf7d0;
 
-    --text-primary:   #0f172a;
-    --text-secondary: #475569;
-    --text-muted:     #94a3b8;
+    --text-primary:   #111827;
+    --text-secondary: #334155;
+    --text-muted:     #64748b;
 
-    --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-sm: 0 1px 4px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-    --shadow:    0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-xs: 0 1px 2px rgba(16,24,40,0.06);
+    --shadow-sm: 0 2px 6px rgba(16,24,40,0.06), 0 1px 2px rgba(16,24,40,0.04);
+    --shadow:    0 8px 24px rgba(16,24,40,0.08), 0 2px 6px rgba(16,24,40,0.05);
 
     --font:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --radius: 10px;
@@ -65,7 +65,10 @@
   /* ─── PASSWORD GATE ─── */
   #gate {
     position: fixed; inset: 0; z-index: 9999;
-    background: linear-gradient(140deg, #0f1e3a 0%, #0a1428 60%, #14203c 100%);
+    background:
+      radial-gradient(circle at 20% 20%, #fff 0%, #f4f7fc 52%, transparent 70%),
+      radial-gradient(circle at 85% 10%, #eef4ff 0%, transparent 45%),
+      linear-gradient(180deg, #f6f8fc 0%, #edf2f9 100%);
     display: flex; align-items: center; justify-content: center;
     padding: 24px;
   }
@@ -79,40 +82,37 @@
     display: flex; flex-direction: column; align-items: center; gap: 10px;
   }
 
-  .gate-logo-mark {
-    width: 46px; height: 46px;
-    background: #dc2626;
-    clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
-    filter: drop-shadow(0 6px 16px rgba(220,38,38,0.45));
-  }
-
-  .gate-logo-text {
-    font-size: 18px; font-weight: 800; letter-spacing: 0.16em;
-    color: #fff; text-transform: uppercase;
+  .gate-logo {
+    width: min(420px, 78vw);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 22px rgba(15,23,42,0.08));
+    margin-bottom: 4px;
   }
 
   .gate-logo-sub {
-    font-size: 10px; color: rgba(255,255,255,0.35);
+    font-size: 11px; color: #64748b;
     letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 600;
   }
 
   .gate-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(24px);
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 32px;
     width: 100%;
     display: flex; flex-direction: column; gap: 16px;
+    box-shadow: var(--shadow);
   }
 
   .gate-title {
-    font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.88);
+    font-size: 17px; font-weight: 700; color: var(--text-primary);
     text-align: center;
   }
 
   .gate-subtitle {
-    font-size: 12px; color: rgba(255,255,255,0.38); text-align: center;
+    font-size: 13px; color: var(--text-secondary); text-align: center;
     margin-top: -8px; line-height: 1.55;
   }
 
@@ -120,26 +120,26 @@
 
   .gate-input {
     width: 100%; padding: 12px 44px 12px 14px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.13);
-    border-radius: 8px; color: #fff; font-family: var(--font);
-    font-size: 14px; outline: none; transition: border-color 0.2s, background 0.2s;
+    background: #fff;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px; color: var(--text-primary); font-family: var(--font);
+    font-size: 15px; outline: none; transition: border-color 0.2s, background 0.2s;
   }
-  .gate-input::placeholder { color: rgba(255,255,255,0.28); }
-  .gate-input:focus { border-color: rgba(59,130,246,0.65); background: rgba(255,255,255,0.09); }
+  .gate-input::placeholder { color: #94a3b8; }
+  .gate-input:focus { border-color: rgba(37,99,235,0.72); background: #fff; }
   .gate-input.error { border-color: rgba(220,38,38,0.6); animation: shake 0.3s ease; }
 
   .gate-eye {
     position: absolute; right: 11px; top: 50%; transform: translateY(-50%);
-    cursor: pointer; color: rgba(255,255,255,0.28); background: none; border: none;
+    cursor: pointer; color: #94a3b8; background: none; border: none;
     display: flex; padding: 4px; transition: color 0.2s;
   }
-  .gate-eye:hover { color: rgba(255,255,255,0.55); }
+  .gate-eye:hover { color: var(--text-secondary); }
 
   .gate-btn {
     width: 100%; padding: 13px;
     background: #1d4ed8; border: none; border-radius: 8px;
-    color: #fff; font-family: var(--font); font-size: 14px;
+    color: #fff; font-family: var(--font); font-size: 15px;
     font-weight: 600; cursor: pointer; transition: all 0.15s;
     letter-spacing: 0.01em;
   }
@@ -147,7 +147,7 @@
   .gate-btn:active { transform: translateY(0); }
 
   .gate-error {
-    font-size: 12px; color: #fca5a5; text-align: center;
+    font-size: 13px; color: #b91c1c; text-align: center;
     min-height: 16px; opacity: 0; transition: opacity 0.2s;
   }
   .gate-error.visible { opacity: 1; }
@@ -181,16 +181,11 @@
     display: flex; align-items: center; gap: 9px; text-decoration: none;
   }
 
-  .nav-logo-mark {
-    width: 24px; height: 24px;
-    background: #dc2626;
-    clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
-    flex-shrink: 0;
-  }
-
-  .nav-logo-text {
-    font-size: 13px; font-weight: 800; letter-spacing: 0.15em;
-    color: var(--text-primary); text-transform: uppercase;
+  .nav-logo-img {
+    height: 22px;
+    width: auto;
+    object-fit: contain;
+    display: block;
   }
 
   .nav-links {
@@ -198,7 +193,7 @@
   }
 
   .nav-links a {
-    font-size: 12px; font-weight: 500; color: var(--text-secondary);
+    font-size: 13px; font-weight: 600; color: var(--text-secondary);
     text-decoration: none; padding: 5px 11px; border-radius: var(--radius-sm);
     transition: all 0.15s;
   }
@@ -213,22 +208,25 @@
 
   /* ─── HERO ─── */
   .report-hero {
-    background: linear-gradient(140deg, #0f1e3a 0%, #0a1428 60%, #14203c 100%);
+    background:
+      radial-gradient(circle at 85% 20%, rgba(37,99,235,0.12) 0%, transparent 45%),
+      linear-gradient(135deg, #ffffff 0%, #eff5ff 52%, #f9fbff 100%);
     padding: 52px 40px 48px;
     position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--border);
   }
 
   .report-hero::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 55% 80% at 75% 50%, rgba(59,130,246,0.14) 0%, transparent 65%);
+    background: radial-gradient(ellipse 55% 80% at 75% 50%, rgba(59,130,246,0.08) 0%, transparent 65%);
     pointer-events: none;
   }
 
   .report-hero::after {
     content: '';
     position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-    background: rgba(255,255,255,0.08);
+    background: var(--border);
   }
 
   .hero-inner {
@@ -238,7 +236,7 @@
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
-    text-transform: uppercase; color: rgba(255,255,255,0.45);
+    text-transform: uppercase; color: #64748b;
     margin-bottom: 20px;
   }
 
@@ -256,20 +254,20 @@
   }
 
   .hero-title {
-    font-size: 36px; font-weight: 800; color: #fff;
+    font-size: 38px; font-weight: 800; color: var(--text-primary);
     line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 22px;
   }
 
-  .hero-title span { color: #93c5fd; }
+  .hero-title span { color: var(--blue-mid); }
 
   .hero-meta {
     display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
   }
 
   .hero-tag {
-    font-size: 11px; font-weight: 500;
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.13);
-    color: rgba(255,255,255,0.7);
+    font-size: 12px; font-weight: 600;
+    background: #fff; border: 1px solid var(--border);
+    color: var(--text-secondary);
     padding: 5px 12px; border-radius: 20px;
     display: flex; align-items: center; gap: 6px;
   }
@@ -287,6 +285,10 @@
 
   .section-header {
     display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    position: sticky; top: 54px; z-index: 20;
+    padding: 10px 0;
+    background: rgba(246,248,252,0.92);
+    backdrop-filter: blur(8px);
   }
 
   .section-pill {
@@ -297,14 +299,14 @@
   }
 
   .section-title {
-    font-size: 19px; font-weight: 700; color: var(--text-primary);
+    font-size: 22px; font-weight: 800; color: var(--text-primary);
     letter-spacing: -0.02em;
   }
 
   .section-line { flex: 1; height: 1px; background: var(--border); }
 
   .intro-para {
-    font-size: 14px; color: var(--text-secondary); line-height: 1.8;
+    font-size: 16px; color: var(--text-secondary); line-height: 1.82;
     max-width: 820px;
   }
   .intro-para strong { color: var(--text-primary); font-weight: 600; }
@@ -347,34 +349,62 @@
   .stat-tile.green .stat-value { color: var(--green-mid); }
 
   .stat-label {
-    font-size: 12px; font-weight: 600; color: var(--text-primary);
+    font-size: 14px; font-weight: 700; color: var(--text-primary);
     line-height: 1.3;
   }
 
-  .stat-note { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .stat-note { font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
 
   /* ─── VERSION BANNER ─── */
   .version-banner {
-    background: var(--amber-subtle);
-    border: 1px solid var(--amber-border);
-    border-left: 3px solid var(--amber-mid);
-    border-radius: var(--radius);
-    padding: 14px 18px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue-mid);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
     margin-top: 16px;
     display: flex; align-items: flex-start; gap: 12px;
-    font-size: 12px; color: #78350f; line-height: 1.6;
+    font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+    box-shadow: var(--shadow-sm);
   }
-  .version-banner-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
-  .version-banner strong { color: #451a03; font-weight: 600; }
+  .version-banner-icon { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+  .version-banner strong { color: var(--text-primary); font-weight: 700; }
+
+  .version-options {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .version-option {
+    background: linear-gradient(160deg, #ffffff 0%, #f5f9ff 100%);
+    border: 1px solid var(--blue-border);
+    border-radius: var(--radius);
+    padding: 12px;
+  }
+  .version-option-title {
+    font-size: 12px; font-weight: 800; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--blue);
+    margin-bottom: 4px;
+  }
+  .version-option-body { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  .top-status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
+  }
 
   /* ─── INVESTIGATION BANNER ─── */
   .inv-banner {
-    background: var(--bg-white);
+    background: linear-gradient(165deg, #ffffff 0%, #fffaf0 100%);
     border: 1px solid var(--amber-border);
     border-radius: var(--radius-lg);
     padding: 28px;
     box-shadow: var(--shadow-sm);
-    margin-bottom: 56px;
+    margin-bottom: 0;
   }
 
   .inv-banner-header {
@@ -389,12 +419,12 @@
   }
 
   .inv-banner-title {
-    font-size: 13px; font-weight: 700; color: var(--amber);
+    font-size: 14px; font-weight: 800; color: var(--amber);
     letter-spacing: 0.01em;
   }
 
   .inv-banner p {
-    font-size: 13px; color: var(--text-secondary); line-height: 1.75;
+    font-size: 15px; color: var(--text-secondary); line-height: 1.8;
     margin-bottom: 12px;
   }
   .inv-banner p:last-of-type { margin-bottom: 0; }
@@ -406,7 +436,7 @@
   }
 
   .inv-pill {
-    font-size: 11px; font-weight: 600; padding: 5px 12px;
+    font-size: 12px; font-weight: 700; padding: 6px 12px;
     border-radius: 20px; display: flex; align-items: center; gap: 5px;
   }
   .inv-pill.pending { background: var(--amber-subtle); color: var(--amber); border: 1px solid var(--amber-border); }
@@ -526,11 +556,11 @@
   .incident-who { flex: 1; }
 
   .incident-name {
-    font-size: 13px; font-weight: 700; color: var(--text-primary);
+    font-size: 14px; font-weight: 700; color: var(--text-primary);
     display: flex; align-items: center; gap: 6px;
   }
 
-  .incident-crew { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .incident-crew { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
   .incident-badges { display: flex; gap: 5px; align-items: center; flex-shrink: 0; }
 
@@ -582,7 +612,7 @@
   .ib-row {
     display: flex; justify-content: space-between; align-items: flex-start;
     gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border);
-    font-size: 12px;
+    font-size: 13px;
   }
   .ib-row:last-child { border-bottom: none; }
 
@@ -597,7 +627,7 @@
   .ib-finding {
     background: var(--bg-subtle); border: 1px solid var(--border);
     border-radius: 8px; padding: 14px;
-    font-size: 12px; color: var(--text-secondary); line-height: 1.65;
+    font-size: 14px; color: var(--text-secondary); line-height: 1.75;
     margin-top: 4px;
   }
   .ib-finding + .ib-finding { margin-top: 8px; }
@@ -638,10 +668,10 @@
   }
 
   .assumption-title {
-    font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.4;
+    font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.5;
   }
 
-  .assumption-body { font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
+  .assumption-body { font-size: 14px; color: var(--text-secondary); line-height: 1.75; }
 
   /* ─── SASHA QUOTE ─── */
   .sasha-quote {
@@ -672,7 +702,7 @@
   }
 
   .sasha-point {
-    font-size: 13px; color: var(--text-secondary); line-height: 1.65;
+    font-size: 14px; color: var(--text-secondary); line-height: 1.75;
     padding: 10px 0; border-bottom: 1px solid var(--blue-border);
     display: flex; align-items: flex-start; gap: 10px;
   }
@@ -715,7 +745,7 @@
 
   .step-content { flex: 1; }
   .step-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; line-height: 1.3; }
-  .step-desc  { font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
+  .step-desc  { font-size: 14px; color: var(--text-secondary); line-height: 1.75; }
 
   .step-footer {
     display: flex; align-items: center; justify-content: space-between;
@@ -755,6 +785,8 @@
 
   @media (max-width: 900px) {
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .version-options { grid-template-columns: 1fr; }
+    .top-status-grid { grid-template-columns: 1fr; }
     .next-steps-grid { grid-template-columns: 1fr; }
   }
 
@@ -775,8 +807,7 @@
 <div id="gate">
   <div class="gate-inner">
     <div class="gate-brand">
-      <div class="gate-logo-mark"></div>
-      <div class="gate-logo-text">Unleash</div>
+      <img src="./unleash-logo.svg" alt="Unleash logo" class="gate-logo" />
       <div class="gate-logo-sub">Internal Access Only</div>
     </div>
 
@@ -805,8 +836,7 @@
 
   <nav class="nav">
     <a href="#" class="nav-logo">
-      <div class="nav-logo-mark"></div>
-      <span class="nav-logo-text">Unleash</span>
+      <img src="./unleash-logo.svg" alt="Unleash logo" class="nav-logo-img" />
     </a>
     <ul class="nav-links">
       <li><a href="#overview">Overview</a></li>
@@ -829,7 +859,7 @@
       <div class="hero-meta">
         <span class="hero-tag"><span class="hero-tag-dot" style="background:#93c5fd;"></span>Prepared: 20 February 2026</span>
         <span class="hero-tag"><span class="hero-tag-dot" style="background:#6ee7b7;"></span>Client: Endeavour Energy (PSBI)</span>
-        <span class="hero-tag"><span class="hero-tag-dot" style="background:#fca5a5;"></span>App: v26.01.01 (assumed)</span>
+        <span class="hero-tag"><span class="hero-tag-dot" style="background:#fca5a5;"></span>App: v26.01 / v26.01.01 (unconfirmed)</span>
         <span class="hero-tag">DJI Mavic 3 Thermal</span>
       </div>
     </div>
@@ -846,7 +876,7 @@
       </div>
 
       <p class="intro-para">
-        Over <strong>12–20 February 2026</strong>, Endeavour Energy's PSBI field crews reported a cluster of flight incidents split across two categories: <strong>uncommanded drone movement</strong> (including 2 confirmed crashes) and <strong>recurring data downlink loss</strong> affecting multiple crews. The situation escalated on 19–20 Feb when Endeavour's contact Steve Catto flagged that operator Hover may consider <strong>suspending all PSBI flying</strong> if further incidents occur. All incidents are assumed to have occurred on <strong>Autofly v26.01.01</strong>. Root cause remains unconfirmed pending DJI's analysis of .DAT flight log files.
+        Over <strong>12–20 February 2026</strong>, Endeavour Energy's PSBI field crews reported a cluster of flight incidents split across two categories: <strong>uncommanded drone movement</strong> (including 2 confirmed crashes) and <strong>recurring data downlink loss</strong> affecting multiple crews. The situation escalated on 19–20 Feb when Endeavour's contact Steve Catto flagged that operator Hover may consider <strong>suspending all PSBI flying</strong> if further incidents occur. Root cause remains unconfirmed pending DJI's analysis of .DAT flight log files.
       </p>
 
       <div class="stat-grid">
@@ -879,26 +909,59 @@
       <div class="version-banner">
         <div class="version-banner-icon">ℹ️</div>
         <div>
-          <strong>Version assumption:</strong> All incidents are assumed to have occurred on <strong>Autofly v26.01.01</strong> (internal build reference v169). The previous stable version is <strong>v26.01</strong> (v168), which has been rolled back for Esperance and the Intellispatial demo as a precautionary measure. The link between version and incident behaviour is a working assumption — not yet confirmed by investigation.
+          <strong>Working version assumptions:</strong> incident logs currently do not conclusively confirm the exact build in use for every event.
+          <div class="version-options">
+            <div class="version-option">
+              <div class="version-option-title">Assumption A</div>
+              <div class="version-option-body"><strong>v26.01 (master)</strong> could be the active client version.</div>
+            </div>
+            <div class="version-option">
+              <div class="version-option-title">Assumption B</div>
+              <div class="version-option-body"><strong>v26.01.01 (hotfix)</strong> could be the active client version.</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- ─── INVESTIGATION STATUS ─── -->
-    <div id="status">
-      <div class="inv-banner">
-        <div class="inv-banner-header">
-          <div class="inv-icon-box">⚠️</div>
-          <div class="inv-banner-title">INVESTIGATION IN PROGRESS — ALL FINDINGS ARE WORKING ASSUMPTIONS</div>
+      <div class="top-status-grid">
+        <div id="status" class="inv-banner">
+          <div class="inv-banner-header">
+            <div class="inv-icon-box">⚠️</div>
+            <div class="inv-banner-title">INVESTIGATION IN PROGRESS — ALL FINDINGS ARE WORKING ASSUMPTIONS</div>
+          </div>
+          <p>
+            <strong>Nothing in this report should be treated as a confirmed root cause.</strong> All analysis is based on DJI TXT/CSV log files and partial Autofly (AFL) app logs — useful but incomplete. The <strong>.DAT files</strong> (full black-box telemetry required for DJI's official investigation) have been requested from Endeavour but not yet received.
+          </p>
+          <div class="inv-pills">
+            <span class="inv-pill pending">DAT Files — Awaiting from Endeavour</span>
+            <span class="inv-pill pending">DJI Support — No Response (Chinese New Year)</span>
+            <span class="inv-pill active">Field Test — Scheduled (Esperance)</span>
+            <span class="inv-pill active">DJI Ticket — Submitted 18 Feb</span>
+          </div>
         </div>
-        <p>
-          <strong>Nothing in this report should be treated as a confirmed root cause.</strong> All analysis is based on DJI TXT/CSV log files and partial Autofly (AFL) app logs — useful but incomplete. The <strong>.DAT files</strong> (full black-box telemetry required for DJI's official investigation) have been requested from Endeavour but not yet received. Until DJI analyses those files and formally responds, no cause can be definitively attributed to any incident.
-        </p>
-        <div class="inv-pills">
-          <span class="inv-pill pending">DAT Files — Awaiting from Endeavour</span>
-          <span class="inv-pill pending">DJI Support — No Response (Chinese New Year)</span>
-          <span class="inv-pill active">Field Test — Scheduled (Esperance)</span>
-          <span class="inv-pill active">DJI Ticket — Submitted 18 Feb</span>
+        <div id="next-steps" class="quick-steps">
+          <div class="quick-steps-title">Next Steps Action</div>
+          <div class="quick-step-list">
+            <div class="quick-step-item">
+              <h4>Retrieve outstanding .DAT and incident logs</h4>
+              <p>Collect all missing .DAT, CSV, and AFL files before final conclusions.</p>
+              <div class="quick-step-meta">Owner: Cameron → Steve Catto</div>
+            </div>
+            <div class="quick-step-item">
+              <h4>Run field validation on both version assumptions</h4>
+              <p>Test <strong>v26.01</strong> and <strong>v26.01.01</strong> in Esperance against geofence scenarios.</p>
+              <div class="quick-step-meta">Owner: Alex + Cameron</div>
+            </div>
+            <div class="quick-step-item">
+              <h4>Internal QA compare v26.01 vs v26.01.01</h4>
+              <p>Review geofence handling, RTK handoff, and downlink state management differences.</p>
+              <div class="quick-step-meta">Owner: Sasha</div>
+            </div>
+            <div class="quick-step-item">
+              <h4>Leadership risk prep</h4>
+              <p>Prepare liability, insurance, and client communication contingencies before DJI response.</p>
+              <div class="quick-step-meta">Owner: Leadership</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -992,7 +1055,7 @@
             <div class="incident-type-dot"></div>
             <div class="incident-who">
               <div class="incident-name">Scott <span style="font-weight:400;color:var(--text-muted);font-size:11px;">/ Crew 3</span></div>
-              <div class="incident-crew">Aircraft: 1581F5FJD23A400D · v26.01.01 (assumed)</div>
+          <div class="incident-crew">Aircraft: 1581F5FJD23A400D · v26.01 / v26.01.01 (unconfirmed)</div>
             </div>
             <div class="incident-badges">
               <span class="badge crash">Crash</span>
@@ -1038,7 +1101,7 @@
             <div class="incident-type-dot"></div>
             <div class="incident-who">
               <div class="incident-name">Unknown Pilot <span style="font-weight:400;color:var(--text-muted);font-size:11px;">/ Crew TBC</span></div>
-              <div class="incident-crew">Aircraft: TBC · v26.01.01 (assumed)</div>
+              <div class="incident-crew">Aircraft: TBC · v26.01 / v26.01.01 (unconfirmed)</div>
             </div>
             <div class="incident-badges">
               <span class="badge crash">Crash</span>
@@ -1066,7 +1129,7 @@
             <div class="incident-type-dot"></div>
             <div class="incident-who">
               <div class="incident-name">George <span style="font-weight:400;color:var(--text-muted);font-size:11px;">/ Crew 12</span></div>
-              <div class="incident-crew">Aircraft: 1581F5FJC243B00D · v26.01.01 (assumed)</div>
+              <div class="incident-crew">Aircraft: 1581F5FJC243B00D · v26.01 / v26.01.01 (unconfirmed)</div>
             </div>
             <div class="incident-badges">
               <span class="badge movement">RTK Shift</span>
@@ -1107,7 +1170,7 @@
             <div class="incident-type-dot"></div>
             <div class="incident-who">
               <div class="incident-name">Harry <span style="font-weight:400;color:var(--text-muted);font-size:11px;">/ Crew 5</span></div>
-              <div class="incident-crew">Aircraft: 1581F5FJD23A400D · v26.01.01 (assumed)</div>
+              <div class="incident-crew">Aircraft: 1581F5FJD23A400D · v26.01 / v26.01.01 (unconfirmed)</div>
             </div>
             <div class="incident-badges">
               <span class="badge movement">Reported Movement</span>
@@ -1242,13 +1305,6 @@
       </div>
 
       <div class="assumption-grid">
-
-        <div class="assumption-card">
-          <span class="assumption-tag">Assumption</span>
-          <div class="assumption-title">v26.01.01 may be a contributing factor</div>
-          <div class="assumption-body">All incidents are assumed to have occurred on v26.01.01 — the newest build. It was not field-tested before Endeavour deployment. No incidents have been reported on v26.01, in our own testing, or with other clients.</div>
-        </div>
-
         <div class="assumption-card">
           <span class="assumption-tag">Assumption</span>
           <div class="assumption-title">Geofence missions may be the specific trigger</div>
@@ -1292,75 +1348,6 @@
         <div class="sasha-point"><span class="sasha-num">1.</span><span><strong>Uncommanded movements are either a hardware or airlink issue</strong> — not an app version issue. IMU, RC, or drone calibration are possible contributing factors.</span></div>
         <div class="sasha-point"><span class="sasha-num">2.</span><span><strong>Downlink issues have no correlation with Autofly.</strong> Input from other pilots flying the same equipment would be useful for comparison.</span></div>
         <div class="sasha-point"><span class="sasha-num">3.</span><span>Priority: <strong>wait for the full DJI .DAT logs and DJI's formal response</strong> before drawing any further conclusions.</span></div>
-      </div>
-    </div>
-
-    <!-- ─── SECTION 4: NEXT STEPS ─── -->
-    <div class="section" id="next-steps">
-      <div class="section-header">
-        <span class="section-pill">04</span>
-        <h2 class="section-title">Next Steps — As of 20 February 2026</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="next-steps-grid">
-
-        <div class="next-step">
-          <div class="step-top">
-            <div class="step-icon amber">📁</div>
-            <div class="step-content">
-              <div class="step-title">Retrieve remaining logs + await DJI .DAT analysis</div>
-              <div class="step-desc">Full black-box .DAT logs have been requested from Steve Catto for all crash and movement incidents. Additionally, logs from the 20 Feb crash and Rick/Pearce downlink incidents are still outstanding. Once received, the .DAT files need to be submitted to DJI's support ticket. <strong>No root cause can be confirmed until DJI analyses these.</strong></div>
-            </div>
-          </div>
-          <div class="step-footer">
-            <span class="step-status waiting">Awaiting</span>
-            <span class="step-owner">Cameron → Steve Catto</span>
-          </div>
-        </div>
-
-        <div class="next-step">
-          <div class="step-top">
-            <div class="step-icon green">🛸</div>
-            <div class="step-content">
-              <div class="step-title">Alex &amp; Cameron — Esperance field test</div>
-              <div class="step-desc">Alex and Cameron to test both <strong>v26.01 and v26.01.01</strong> in the field during the Esperance trip, specifically attempting to replicate uncommanded movement on geofence missions. This is our internal validation path, independent of DJI. Results will determine whether a version rollback is warranted across all Endeavour deployments.</div>
-            </div>
-          </div>
-          <div class="step-footer">
-            <span class="step-status confirmed">Confirmed</span>
-            <span class="step-owner">Alex + Cameron</span>
-          </div>
-        </div>
-
-        <div class="next-step">
-          <div class="step-top">
-            <div class="step-icon blue">🔍</div>
-            <div class="step-content">
-              <div class="step-title">Sasha — QA review of v26.01 vs v26.01.01</div>
-              <div class="step-desc">Sasha to perform an internal review of both versions based on the reported incidents — checking for behavioural differences in geofence mission handling, RTK handoff logic, and downlink state management. This is an internal engineering QA pass, not dependent on DJI's response, and should happen in parallel with the Esperance test.</div>
-            </div>
-          </div>
-          <div class="step-footer">
-            <span class="step-status in-progress">To Action</span>
-            <span class="step-owner">Sasha</span>
-          </div>
-        </div>
-
-        <div class="next-step leadership">
-          <div class="step-top">
-            <div class="step-icon red">⚖️</div>
-            <div class="step-content">
-              <div class="step-title">Leadership — Worst case scenario preparation</div>
-              <div class="step-desc">With 2 confirmed crashes and an escalating client situation, leadership should begin preparing for the scenario where the investigation confirms Unleash Live's software contributed to the crashes. This includes reviewing liability exposure, insurance coverage, client communication strategy, and contractual obligations under the Endeavour/PSBI agreement. A proactive internal discussion is advisable before DJI responds — reactive is too late.</div>
-            </div>
-          </div>
-          <div class="step-footer">
-            <span class="step-status action">Action Required</span>
-            <span class="step-owner">Leadership</span>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -1434,3 +1421,43 @@
 
 </body>
 </html>
+  .quick-steps {
+    background: linear-gradient(165deg, #ffffff 0%, #eff7ff 100%);
+    border: 1px solid var(--blue-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .quick-steps-title {
+    font-size: 14px; font-weight: 800; color: var(--blue);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .quick-step-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .quick-step-item {
+    background: rgba(255,255,255,0.75);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+  }
+
+  .quick-step-item h4 {
+    font-size: 14px; font-weight: 700; color: var(--text-primary);
+    line-height: 1.4; margin-bottom: 4px;
+  }
+
+  .quick-step-item p {
+    font-size: 14px; line-height: 1.65; color: var(--text-secondary);
+  }
+
+  .quick-step-meta {
+    margin-top: 8px;
+    font-size: 12px; font-weight: 700; color: var(--text-muted);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
